@@ -139,6 +139,7 @@ public class JJsftp extends CordovaPlugin {
         boolean validArgs   = true;
         String[] keys       = new String[]{
             "host",
+			"port",
             "user",
             "pswd"
         };

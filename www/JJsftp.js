@@ -15,13 +15,15 @@ var argscheck   = require('cordova/argscheck'),
  * @param {String} Username
  * @param {String} Password that match with the user name credentials
  */
-function JJsftp(host, usr, pwr) {
+function JJsftp(host, port, usr, pwr) {
     argscheck.checkArgs('sss', 'JJsftp', arguments);
     this.host       = host || false;
+	this.port		= port || false;
     this.usr        = usr || false;
     this.pwr        = pwr || false;
     this.hostInfo   = {
         host        : this.host,
+		port		: this.port,
         user        : this.usr,
         pswd        : this.pwr
     };
