@@ -68,6 +68,8 @@ public class JJsftp extends CordovaPlugin {
             break;
         }
         
+		callbackContext.success();
+		
         return result;
     }
     
