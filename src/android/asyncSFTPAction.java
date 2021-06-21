@@ -20,6 +20,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.util.UUID;
+import java.lang.System;
 
 import org.apache.cordova.CordovaWebView;
 
@@ -36,6 +37,8 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
     private int fileListSize        = 0;
 
     public String udid              = null;
+	
+	public int timetaken			= 0;
     
     public asyncSFTPAction(JSONObject hostData, JSONArray actionArr, String action, CordovaWebView actualWv, String udid) {
         this.hostData   = hostData;
@@ -95,6 +98,8 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
         this.sftpChannel.connect();
         this.jsEvent("SFTPActionConnected", "{id:'"+this.udid+"'}");
         Log.d("SFTP Plugin - JJDLTC", "Connection Open. [ID:"+this.udid+"]");
+		
+		this.timetaken = System.currentTimeMillis();
     }
 
     private void actionExecution(JSONArray actions) throws SftpException{
@@ -134,6 +139,7 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
         this.session.disconnect();
         this.jsEvent("SFTPActionDisconnected", "{id:'"+this.udid+"'}");
         Log.d("SFTP Plugin - JJDLTC", "Connection Close. [ID:"+this.udid+"]");
+		Log.d("SFTP Plugin time taken: " + System.currentTimeMillis() - this.timetaken + " ms");
     }
     
     @SuppressWarnings("deprecation")
