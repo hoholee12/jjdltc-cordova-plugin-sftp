@@ -140,7 +140,7 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
         this.jsEvent("SFTPActionDisconnected", "{id:'"+this.udid+"'}");
         Log.d("SFTP Plugin - JJDLTC", "Connection Close. [ID:"+this.udid+"]");
 		this.timetaken = System.currentTimeMillis() - this.timetaken;
-		Log.d("SFTP Plugin time taken: " + Long.toString(this.timetaken) + " ms");
+		Log.d("SFTP Plugin - JJDLTC", " time taken: " + Long.toString(this.timetaken) + " ms");
     }
     
     @SuppressWarnings("deprecation")
