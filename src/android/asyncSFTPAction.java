@@ -38,7 +38,7 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
 
     public String udid              = null;
 	
-	public int timetaken			= 0;
+	public long timetaken			= 0;
     
     public asyncSFTPAction(JSONObject hostData, JSONArray actionArr, String action, CordovaWebView actualWv, String udid) {
         this.hostData   = hostData;
