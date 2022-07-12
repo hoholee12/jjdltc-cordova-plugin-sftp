@@ -1,7 +1,35 @@
 {
-  "name": "cordova-sftp-plugin",
-  "version": "2.0.1",
-  "description": "Cordova SFTP Upload And Download",
+  "_from": "git+https://github.com/hoholee12/jjdltc-cordova-plugin-sftp.git",
+  "_id": "cordova-sftp-plugin@2.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-sftp-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "cordova-sftp-plugin@git+https://github.com/hoholee12/jjdltc-cordova-plugin-sftp.git",
+    "name": "cordova-sftp-plugin",
+    "escapedName": "cordova-sftp-plugin",
+    "rawSpec": "git+https://github.com/hoholee12/jjdltc-cordova-plugin-sftp.git",
+    "saveSpec": "git+https://github.com/hoholee12/jjdltc-cordova-plugin-sftp.git",
+    "fetchSpec": "https://github.com/hoholee12/jjdltc-cordova-plugin-sftp.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/hoholee12/jjdltc-cordova-plugin-sftp.git#48598d13ae601b1282c66a35486bd8a398f94982",
+  "_spec": "cordova-sftp-plugin@git+https://github.com/hoholee12/jjdltc-cordova-plugin-sftp.git",
+  "_where": "C:\\androidstudioprojects\\NemoSharing",
+  "author": {
+    "name": "Joel De La Torriente",
+    "email": "jjdltc@gmail.com",
+    "url": "https://github.com/jjdltc"
+  },
+  "bugs": {
+    "url": "https://github.com/jjdltc/jjdltc-cordova-plugin-sftp/issues"
+  },
+  "bundleDependencies": false,
   "cordova": {
     "id": "com.jjdltc.cordova.plugin.sftp",
     "platforms": [
@@ -9,21 +37,10 @@
       "ios"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jjdltc/jjdltc-cordova-plugin-sftp.git"
-  },
-  "keywords": [
-    "cordova",
-    "sftp",
-    "upload",
-    "download",
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios"
-  ],
-  "scripts": {
-    "jslint": "eslint ./www/"
+  "deprecated": false,
+  "description": "Cordova SFTP Upload And Download",
+  "devDependencies": {
+    "husky": "^4.2.5"
   },
   "engines": {
     "cordovaDependencies": {
@@ -37,18 +54,29 @@
       }
     }
   },
-  "author": "Joel De La Torriente <jjdltc@gmail.com> (https://github.com/jjdltc)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jjdltc/jjdltc-cordova-plugin-sftp/issues"
-  },
   "homepage": "https://github.com/jjdltc/jjdltc-cordova-plugin-sftp#readme",
-  "devDependencies": {
-    "husky": "^4.2.5"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run jslint"
     }
-  }
+  },
+  "keywords": [
+    "cordova",
+    "sftp",
+    "upload",
+    "download",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-sftp-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjdltc/jjdltc-cordova-plugin-sftp.git"
+  },
+  "scripts": {
+    "jslint": "eslint ./www/"
+  },
+  "version": "2.0.1"
 }

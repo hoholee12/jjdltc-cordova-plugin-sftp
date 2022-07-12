@@ -24,7 +24,7 @@ import java.lang.System;
 
 import org.apache.cordova.CordovaWebView;
 
-public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
+public class asyncSFTPAction extends AsyncTask<Void, Integer, Long> {
 
     private JSch jsch               = null;
     private Session session         = null;
@@ -49,19 +49,16 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
     }
     
     @Override
-    protected Boolean doInBackground(Void... params) {
-        boolean result = true;
+    protected Long doInBackground(Void... params) {
         try {
             this.doConnection(this.hostData);
             this.actionExecution(this.actionArr);
-            this.closeConn();
+            
         } catch (Exception e) { /*  JSchException | SftpException e */
             e.printStackTrace();
             Log.e("SFTP Plugin - JJDLTC", "There was a problem in the async execution. [ID:"+this.udid+"]");
-            this.closeConn();
-            result = false;
         }
-        return result;
+        return this.closeConn();
     }
     
     @Override
@@ -72,10 +69,10 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
     }
     
     @Override
-    protected void onPostExecute(Boolean result) {
+    protected void onPostExecute(Long result) {
         super.onPostExecute(result);
-        this.jsEvent("SFTPActionListEnd", "{id:'"+this.udid+"', all:"+result+"}");
-        Log.d("SFTP Plugin - JJDLTC", "All the files "+((result)?"were":"weren't")+" reach it. [ID:"+this.udid+"]" );
+        this.jsEvent("SFTPActionListEnd", "{id:'"+this.udid+"'}");
+        Log.d("SFTP Plugin - JJDLTC", "All the files reach it. [ID:"+this.udid+"]" );
     }
     
     @Override
@@ -132,7 +129,7 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
         return Exists;
     }
 
-    private void closeConn(){
+    private Long closeConn(){
         if(this.sftpChannel != null){
             this.sftpChannel.exit();
         }
@@ -141,6 +138,7 @@ public class asyncSFTPAction extends AsyncTask<Void, Integer, Boolean> {
         Log.d("SFTP Plugin - JJDLTC", "Connection Close. [ID:"+this.udid+"]");
 		this.timetaken = System.currentTimeMillis() - this.timetaken;
 		Log.d("SFTP Plugin - JJDLTC", " time taken: " + Long.toString(this.timetaken) + " ms");
+        return this.timetaken;
     }
     
     @SuppressWarnings("deprecation")

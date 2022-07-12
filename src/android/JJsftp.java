@@ -11,6 +11,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.util.Log;
 
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ import android.os.AsyncTask;
 
 public class JJsftp extends CordovaPlugin {
     
-    private AsyncTask<Void, Integer, Boolean> staticAsync = null;
+    private AsyncTask<Void, Integer, Long> staticAsync = null;
     private enum ACTIONS {
         download,
         upload,
@@ -26,6 +27,7 @@ public class JJsftp extends CordovaPlugin {
     };
 
     private String udid = null;
+    private Long latency = 0L;
 
     /**
      * Executes the request and returns PluginResult.
@@ -88,6 +90,8 @@ public class JJsftp extends CordovaPlugin {
         response.put("success", success);
         response.put("message", msg);
         response.put("data", data);
+        response.put("latency", this.latency);
+        Log.d("asdfasdfasdf", " time taken: " + Long.toString(this.latency) + " ms");
 
         if(success){
             ctx.success(response);
@@ -115,8 +119,14 @@ public class JJsftp extends CordovaPlugin {
      * @param actionArr         JSONArray with the action list to execute (processed by 'setActionArr' function)
      */
     private void upload(JSONObject hostData, JSONArray actionArr){
-        this.staticAsync = new asyncSFTPAction(hostData, actionArr, "upload", this.webView, this.udid);
-        this.staticAsync.execute();
+        try{
+            this.staticAsync = new asyncSFTPAction(hostData, actionArr, "upload", this.webView, this.udid);
+            this.staticAsync.execute();
+            this.latency = this.staticAsync.get();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     /**
